@@ -124,3 +124,18 @@ public class MySessionBean {
   // ...
 }
 ```
+
+
+# The global-session in Annotation
+The global-session scope allows you to create a bean that is shared across all portlets within the same session.
+When a bean is defined with a global-session scope, a new instance of the bean is created for each user session that is established with the web application, and the same instance of the bean is shared across all portlets within the same session. This means that each instance of the bean is specific to a particular user session and is shared across different portlets within the same session.
+
+To define a bean with the global-session scope, you can use the @Scope annotation with the value "globalSession", like this:
+```java
+@Component
+@Scope(value = WebApplicationContext.SCOPE_GLOBAL_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class MyGlobalSessionBean {
+  // ...
+}
+```
+
