@@ -90,3 +90,37 @@ public class MyPrototypeBean {
 In this example, the MyPrototypeBean class is annotated with @Scope("prototype"), which specifies that a new instance of the bean will be created every time it is requested by the application.
 
 > **_Note_** It is important to note that beans with Prototype scope are not managed by the Spring container after they are created. This means that Spring will not call any lifecycle methods (such as @PostConstruct or @PreDestroy) on the bean, and it is the responsibility of the application to manage the lifecycle of the bean.
+
+
+# The Request scopes
+
+When a bean is defined with a Request scope, a new instance of the bean is created for each HTTP request that is processed by the application. This means that each instance of the bean is specific to a particular HTTP request and is not shared across different requests.
+
+To define a bean with the Request scope, you can use the @Scope annotation with the value "request", like this:
+
+```java
+@Component
+@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class MyRequestBean {
+  // ...
+}
+```
+
+The MyRequestBean class is annotated with @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS), which specifies that a new instance of the bean will be created for each HTTP request processed by the application.
+
+Because the Request scope is specific to HTTP requests, it can only be used in the context of a web application. In addition, because the lifecycle of a Request-scoped bean is tied to an HTTP request, it is important to note that Spring manages the destruction of the bean at the end of the HTTP request. This means that Spring will call any lifecycle methods (such as @PostConstruct or @PreDestroy) on the bean when the request is completed.
+
+# The Session scopes
+
+The Session scope is a specialized scope that is used to create a new instance of a bean for each user session in a web application.
+This means that each instance of the bean is specific to a particular user session and is not shared across different sessions.
+
+To define a bean with the Session scope, you can use the @Scope annotation with the value "session", like this:
+
+```java
+@Component
+@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class MySessionBean {
+  // ...
+}
+```
