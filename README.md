@@ -50,3 +50,43 @@ In this step, the Spring container destroys the bean. It calls the bean's destru
 | 5  | global-session  | This scopes a bean definition to a global HTTP session. Only valid in the context of a web-aware Spring ApplicationContext. |
 |    |  | |
  
+ 
+ # The singleton scopes
+ 
+ If a scope is set to singleton, the Spring IoC container creates exactly one instance of the object defined by that bean definition allows only one instance to be created and provides global access to all other classes through this single object or instance.
+ 
+1. @Component: When a bean is annotated with @Component, it is created as a Singleton by default. This means that the same instance of the bean is shared across the entire application context.
+
+2. @Service: Similar to @Component, beans annotated with @Service are created as Singleton by default.
+
+3. @Repository: Beans annotated with @Repository are also created as Singleton by default.
+
+4. @Controller: Beans annotated with @Controller are created as Singleton by default.
+
+5. To override the default Singleton scope and specify a different scope for a bean, you can use the @Scope annotation. For example:
+```java
+@Component
+@Scope("prototype")
+public class MyPrototypeBean {
+  // ...
+}
+```
+The MyPrototypeBean class is annotated with @Scope("prototype"), which means that a new instance of the bean will be created every time it is requested from the Spring container.
+
+
+# The prototype scopes
+If the scope is set to prototype, the Spring IoC container creates a new bean instance of the object every time a request for that specific bean is made.
+
+To define a bean with the Prototype scope, you can use the @Scope annotation with the value "prototype", like this:
+
+```java
+@Component
+@Scope("prototype")
+public class MyPrototypeBean {
+  // ...
+}
+```
+
+In this example, the MyPrototypeBean class is annotated with @Scope("prototype"), which specifies that a new instance of the bean will be created every time it is requested by the application.
+
+> **_Note_** It is important to note that beans with Prototype scope are not managed by the Spring container after they are created. This means that Spring will not call any lifecycle methods (such as @PostConstruct or @PreDestroy) on the bean, and it is the responsibility of the application to manage the lifecycle of the bean.
