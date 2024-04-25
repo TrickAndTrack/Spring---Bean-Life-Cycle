@@ -3,7 +3,7 @@ lifecycle of a bean consists of several phases, which are managed by the contain
 
 ![sdsad drawio](https://user-images.githubusercontent.com/73180409/228131981-531c245c-8a21-4375-aee4-f38fa166d4dc.png)
 
-Bean life cycle is managed by the spring container. When we run the program then first of all the spring container start, after that the container create the instance of a bean as per the request, and then dependencies are injected, And finally the bean is destroyed when the spring container is closed.
+> **_Note_** Bean life cycle is managed by the spring container. When we run the program then first of all the spring container start, after that the container create the instance of a bean as per the request, and then dependencies are injected, And finally the bean is destroyed when the spring container is closed.
 
 - Container Started 
 
@@ -21,9 +21,6 @@ In this step, the bean is now ready for use. The bean can now be used by other b
 
 - Bean destruction: 
 In this step, the Spring container destroys the bean. It calls the bean's destruction methods such as the destroy() method (if the bean is annotated with the @PreDestroy annotation), or the destroy() method (if the bean implements the DisposableBean interface). These methods are used to perform any necessary cleanup tasks for the bean.
-
-
-> **_Note_** Bean life cycle is managed by the spring container. When we run the program then first of all the spring container start, after that the container create the instance of a bean as per the request, and then dependencies are injected, And finally the bean is destroyed when the spring container is closed.
 
 
 # Properties & Description
