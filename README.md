@@ -1,9 +1,8 @@
 # Spring---Bean-Life-Cycle
 lifecycle of a bean consists of several phases, which are managed by the container. Here is an overview of the bean lifecycle phases.
+> **_Note_** Bean life cycle is managed by the spring container. When we run the program then first of all the spring container start, after that the container create the instance of a bean as per the request, and then dependencies are injected, And finally the bean is destroyed when the spring container is closed.
 
 ![sdsad drawio](https://user-images.githubusercontent.com/73180409/228131981-531c245c-8a21-4375-aee4-f38fa166d4dc.png)
-
-> **_Note_** Bean life cycle is managed by the spring container. When we run the program then first of all the spring container start, after that the container create the instance of a bean as per the request, and then dependencies are injected, And finally the bean is destroyed when the spring container is closed.
 
 - Container Started 
 
